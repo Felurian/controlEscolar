@@ -28,6 +28,8 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="{{url('/registrarAlumno')}}">Registrar Alumno</a></li>
             <li><a href="{{url('/consultarAlumnos')}}">Consultar Alumnos</a></li>
+            <li><a href="{{url('/registrarMaestro')}}">Registrar Maestro</a></li>
+            <li><a href="{{url('/consultarMaestros')}}">Consultar Maestros</a></li>
             <li><a href="#">Something else here</a></li>
             <li class="divider"></li>
             <li><a href="#">Separated link</a></li>

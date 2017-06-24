@@ -12,14 +12,16 @@
 */
 Route::get('/', 'homeController@index');
 
-Route::get('/registrarAlumno', 'alumnosController@registrar');
 
 Route::get("/ejemplo", "ejemploController@index
 	");
 
+					//ALUMNOS
+Route::get('/registrarAlumno', 'alumnosController@registrar');
+
 Route::post('/guardarAlumno', 'alumnosController@guardar');
 
-Route::get('/consultarAlumnos', 'alumnosController@consultar');
+Route::get('/consultarAlumnos','alumnosController@consultar');
 
 Route::get('/eliminarAlumno/{id}', 'alumnosController@eliminar');
 
@@ -27,11 +29,17 @@ Route::get('/editarAlumno/{id}', 'alumnosController@editar');
 
 Route::post('/actualizarAlumno/{id}', 'alumnosController@actualizar');
 
+				//MAESTROS
+Route::get('/registrarMaestro', 'maestrosController@registrar');
 
+Route::post('/guardarMaestro', 'maestrosController@guardar');
 
+Route::get('/consultarMaestros','maestrosController@consultar');
 
+Route::get('/eliminarMaestro/{id}', 'maestrosController@eliminar');
 
+Route::get('/editarMaestro/{id}', 'maestrosController@editar');
 
-
+Route::post('/actualizarMaestro/{id}', 'maestrosController@actualizar');
 
 
