@@ -93,7 +93,8 @@ class gruposController extends Controller
       $alumnos=DB::table('alumnos')
          ->select('alumnos.*')
          ->paginate(5);
-      return view('agregarAlumnoGrupo', compact('alumnos'));
+      $grupo_id = $id;
+      return view('agregarAlumnoGrupo', compact('alumnos', 'grupo_id'));
       /*
       $alumnos=DB::table('grupos_detalle')
          ->where('grupos_detalle.grupo_id', '!=', $id)
