@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 25, 2017 at 02:20 AM
+-- Generation Time: Jun 25, 2017 at 03:22 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -72,8 +72,8 @@ INSERT INTO `carreras` (`id`, `nombre`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `grupos` (
   `id` int(11) NOT NULL,
-  `materia` int(11) NOT NULL,
-  `maestro` int(11) NOT NULL,
+  `materia_id` int(11) NOT NULL,
+  `maestro_id` int(11) NOT NULL,
   `hora` tinyint(4) NOT NULL,
   `salon` varchar(20) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -144,8 +144,8 @@ ALTER TABLE `carreras`
 --
 ALTER TABLE `grupos`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `materia` (`materia`),
-  ADD KEY `maestro` (`maestro`);
+  ADD KEY `materia` (`materia_id`),
+  ADD KEY `maestro` (`maestro_id`);
 
 --
 -- Indexes for table `grupos_detalle`
@@ -209,8 +209,8 @@ ALTER TABLE `alumnos`
 -- Constraints for table `grupos`
 --
 ALTER TABLE `grupos`
-  ADD CONSTRAINT `grupos_ibfk_1` FOREIGN KEY (`maestro`) REFERENCES `maestros` (`id`),
-  ADD CONSTRAINT `grupos_ibfk_2` FOREIGN KEY (`materia`) REFERENCES `materias` (`id`);
+  ADD CONSTRAINT `grupos_ibfk_1` FOREIGN KEY (`maestro_id`) REFERENCES `maestros` (`id`),
+  ADD CONSTRAINT `grupos_ibfk_2` FOREIGN KEY (`materia_id`) REFERENCES `materias` (`id`);
 
 --
 -- Constraints for table `grupos_detalle`
