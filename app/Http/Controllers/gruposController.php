@@ -74,7 +74,7 @@ class gruposController extends Controller
          ->join('maestros', 'grupos.maestro_id', '=', 'maestros.id')
          ->select('grupos.*', 'materias.nombre as nom_materia', 'maestros.nombre as nom_maestro')
          ->paginate(5);
-      return view('detalleGrupo', 'alumnos', 'grupo');
+      return view('detalleGrupo', compact('alumnos', 'grupo'));
    }
 
    public function eliminarAlumno($id){
