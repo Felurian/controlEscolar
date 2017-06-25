@@ -1,10 +1,11 @@
 @extends('master')
 
 @section('contenido')
-<label>{{$g->nom_materia}}</label>
-<label>{{$g->nom_maestro}}</label>
-<label>{{$g->hora}}</label>
-<label>{{$g->salon}}</label>
+
+<label>{{$grupo->nom_materia}}</label>
+<label>{{$grupo->nom_maestro}}</label>
+<label>{{$grupo->hora}}</label>
+<label>{{$grupo->salon}}</label>
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -32,6 +33,6 @@
 	{{ $alumnos->links() }}
 </div>
 <div>
-	<a href="{{url('/agregarAlumnoGrupo')}}" class="btn btn-primary">Agregar Alumno</a>
+	<a href="{{url('/agregarAlumnoGrupo')}}/{{$grupo->id}}" class="btn btn-primary">Agregar Alumno</a>
 </div>
 @stop
