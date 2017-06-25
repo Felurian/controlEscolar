@@ -82,6 +82,7 @@ class gruposController extends Controller
    }
 
    public function agregarAlumno($id){
+      /*
       $alumnos_en_grupo=DB::table('grupos_detalle')
          ->where('grupos_detalle.grupo_id', '=', $id)
          ->join('alumnos', 'grupos_detalle.alumno_id', '=', 'alumnos.id')
@@ -92,6 +93,12 @@ class gruposController extends Controller
          ->select('alumnos.*')
          ->paginate(5);
       return view('agregarAlumnoGrupo', compact('alumnos'));
+      */
+      $alumnos_en_grupo=DB::table('grupos_detalle')
+         ->where('grupos_detalle.grupo_id', '!=', $id)
+         ->join('alumnos', 'grupos_detalle.alumno_id', '=', 'alumnos.id')
+         ->select('alumnos.*')
+         ->paginate(5);
    }
 }
 
