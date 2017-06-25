@@ -78,7 +78,8 @@ class gruposController extends Controller
    }
 
    public function eliminarAlumno($id){
-      return view('welcome');
+      
+      return redirect('detalleGrupo')
    }
 
    public function agregarAlumno($id){
@@ -114,7 +115,11 @@ class gruposController extends Controller
    }
 
    public function guardarAlumno($grupo_id, $alumno_id){
-      return view('welcome');
+      $entrada= new GruposDetalle();
+      $entrada->grupo_id = $grupo_id;
+      $entrada->alumno_id = $alumno_id;
+      $entrada->save();
+      return redirect('detalleGrupo');
    }
 }
 

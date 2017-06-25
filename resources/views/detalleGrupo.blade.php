@@ -17,10 +17,10 @@
 		@foreach($alumnos as $a)
 			<tr>
 				<td>{{$a->id}}</td>
-				<td>{{$a->nom_alumno}}</td>
-				<td>{{$a->num_alumno}}</td>
+				<td>{{$a->nombre}}</td>
+				<td>{{$a->numero_control}}</td>
 				<td>
-					<a href="{{url('/eliminarAlumnoGrupo')}}/{{$g->id}}" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="Eliminar">
+					<a href="{{url('/eliminarAlumnoGrupo')}}/{{$grupo->id}}" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="Eliminar">
 						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>	
 					</a>
 					
