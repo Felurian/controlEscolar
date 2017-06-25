@@ -72,8 +72,7 @@ class gruposController extends Controller
          ->where('grupos.id', '=', $id)
          ->join('materias', 'grupos.materia_id', '=', 'materias.id')
          ->join('maestros', 'grupos.maestro_id', '=', 'maestros.id')
-         ->select('grupos.*', 'materias.nombre as nom_materia', 'maestros.nombre as nom_maestro')
-         ->paginate(5);
+         ->select('grupos.*', 'materias.nombre as nom_materia', 'maestros.nombre as nom_maestro');
       return view('detalleGrupo', compact('alumnos', 'grupo'));
    }
 
