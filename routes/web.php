@@ -42,4 +42,15 @@ Route::get('/editarMaestro/{id}', 'maestrosController@editar');
 
 Route::post('/actualizarMaestro/{id}', 'maestrosController@actualizar');
 
+			//MATERIAS
+Route::get('/registrarMateria', 'materiasController@registrar');
 
+Route::post('/guardarMateria', 'materiasController@guardar');
+
+Route::get('/consultarMaterias','materias@consultar');
+
+Route::get('/eliminarMateria/{id}', 'materias@eliminar');
+
+Route::get('/editarMateria/{id}', 'materias@editar');
+
+Route::post('/actualizarMateria/{id}', 'materiasController@actualizar');
