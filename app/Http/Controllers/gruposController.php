@@ -65,7 +65,7 @@ class gruposController extends Controller
    public function detalleGrupo($id){
       $alumnos=DB::table('grupos_detalle')
          ->where('grupos_detalle.grupo_id', '=', $id)
-         ->join('alumnos', 'grupos_detalle', '=', 'alumnos.id')
+         ->join('alumnos', 'grupos_detalle.alumno_id', '=', 'alumnos.id')
          ->select('alumnos.*')
          ->paginate(5);
       $grupo=DB::table('grupos')
