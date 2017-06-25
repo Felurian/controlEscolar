@@ -19,12 +19,16 @@
 				<td>{{$g->hora}}</td>
 				<td>{{$g->salon}}</td>
 				<td>
-					<a href="{{url('/editarGrupo')}}/{{$g->id}}" class="btn btn-primary btn-xs">
+					<a href="{{url('/editarGrupo')}}/{{$g->id}}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="bottom" title="Editar">
 						<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 					</a>
-					<a href="{{url('/eliminarGrupo')}}/{{$g->id}}" class="btn btn-danger btn-xs">
+					<a href="{{url('/detalleGrupo')}}/{{$g->id}}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="bottom" title="Cargar Alumnos">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>	
+					</a>
+					<a href="{{url('/eliminarGrupo')}}/{{$g->id}}" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="Eliminar">
 						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>	
 					</a>
+					
 				</td>
 			</tr>
 		@endforeach
@@ -33,3 +37,4 @@
 <div class="text-center">
 	{{ $grupos->links() }}
 </div>
+@stop

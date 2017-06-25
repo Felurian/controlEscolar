@@ -4,20 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Grupos;
+<<<<<<< HEAD
 use App\GruposDetalle;
+=======
+use App\Materias;
+use App\Maestros;
+>>>>>>> 640f88bfe75f576eb7c33efe6de863c112f99cfe
 use DB;
 
 class gruposController extends Controller
 {
    
    public function registrar(){
-      return view('registrarGrupo');
+      $materias=Materias::all();
+      $maestros=Maestros::all();
+      return view('registrarGrupo', compact('materias', 'maestros'));
    }
 
    public function guardar(Request $datos){
       $grupo= new Grupos();
-      $grupo->materia=$datos->input('materia');
-      $grupo->maestro=$datos->input('maestro');
+      $grupo->materia_id=$datos->input('materia');
+      $grupo->maestro_id=$datos->input('maestro');
       $grupo->hora   =$datos->input('hora');
       $grupo->salon  =$datos->input('salon');
       $grupo->save();
@@ -49,8 +56,13 @@ class gruposController extends Controller
    }
    public function actualizar($id, Request $datos){
       $grupo=Grupos::find($id);
+<<<<<<< HEAD
       $grupo->materia=$datos->input('materia');
       $grupo->maestro=$datos->input('maestro');
+=======
+      $grupo->materia_id=$datos->input('materia');
+      $grupo->maestro_id=$datos->input('maestro');
+>>>>>>> 640f88bfe75f576eb7c33efe6de863c112f99cfe
       $grupo->hora   =$datos->input('hora');
       $grupo->salon  =$datos->input('salon');
       $grupo->save();
