@@ -13,8 +13,7 @@
 Route::get('/', 'homeController@index');
 
 
-Route::get("/ejemplo", "ejemploController@index
-	");
+Route::get("/ejemplo", "ejemploController@index");
 
 					//ALUMNOS
 Route::get('/registrarAlumno', 'alumnosController@registrar');

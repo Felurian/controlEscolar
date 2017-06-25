@@ -10,43 +10,45 @@ class gruposController extends Controller
 {
    
    public function registrar(){
-         
-         return view('registrarGrupo');
+      return view('registrarGrupo');
    }
 
    public function guardar(Request $datos){
-         $grupo= new Grupos();
-         $grupo->materia=$datos->input('materia');
-         $grupo->maestro=$datos->input('maestro');
-         $grupo->hora   =$datos->input('hora');
-         $grupo->salon  =$datos->input('salon');
-         $grupo->save();
-
-         return redirect('/consultarGrupos');
+      $grupo= new Grupos();
+      $grupo->materia=$datos->input('materia');
+      $grupo->maestro=$datos->input('maestro');
+      $grupo->hora   =$datos->input('hora');
+      $grupo->salon  =$datos->input('salon');
+      $grupo->save();
+      return redirect('/consultarGrupos');
    }
    public function consultar(){
-         $grupos=DB::table('grupos')
-            ->select('grupos.*')
-            ->paginate(5);
-
-         return view('consultarGrupos', compact('grupos'));
+      $grupos=DB::table('grupos')
+         ->join('materias', 'grupos.materia_id', '=', 'materias.id')
+         ->join('maestros', 'grupos.maestro_id', '=', 'maestros.id')
+         ->select('grupos.*', 'materias.nombre AS nom_materia', 'maestros.nombre AS nom_maestro')
+         ->paginate(5);
+      return view('consultarGrupos', compact('grupos'));
    }
    public function eliminar($id){
-         $grupo=Grupos::find($id);
-         $grupo->delete();
-         return redirect('consultarGrupos');
+      $grupo=Grupos::find($id);
+      $grupo->delete();
+      return redirect('consultarGrupos');
    }
    public function editar($id){
       $grupo=DB::table('grupos')
          ->where('grupos.id', '=', $id)
-         ->select('grupos.*')
+         ->join('materias', 'grupos.materia_id', '=', 'materia.id')
+         ->join('maestros', 'grupos.maestro_id', '=', 'maestro.id')
+         ->select('grupos.*', 'materias.nombre AS nom_materia', 'maestros.nombre AS nom_maestro')
          ->first();
-
-      return view('editarGrupo', compact('grupo'));
+      $materias=Materias::all();
+      $maestros=Maestros::all();
+      return view('editarGrupo', compact('grupo', 'materias', 'maestros'));
    }
    public function actualizar($id, Request $datos){
       $grupo=Grupos::find($id);
-      $grupo->materia=$datos->input('materia');
+      $grupo->materia=$datos->input('materia ');
       $grupo->maestro=$datos->input('maestro');
       $grupo->hora   =$datos->input('hora');
       $grupo->salon  =$datos->input('salon');
