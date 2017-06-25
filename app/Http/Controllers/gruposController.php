@@ -79,7 +79,7 @@ class gruposController extends Controller
 
    public function eliminarAlumno($id){
       
-      return redirect('detalleGrupo')
+      return redirect('detalleGrupo');
    }
 
    public function agregarAlumno($id){
