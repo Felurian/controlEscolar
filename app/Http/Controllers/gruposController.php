@@ -82,7 +82,16 @@ class gruposController extends Controller
    }
 
    public function agregarAlumno($id){
-      return view('welcome');
+      $alumnos_en_grupo=DB::table('grupos_detalle')
+         ->where('grupos_detalle.grupo_id', '=', $id)
+         ->join('alumnos', 'grupos_detalle.alumno_id', '=', 'alumnos.id')
+         ->select('alumnos.*')
+         ->paginate(5);
+      // TODO: solo mostrar alumnos no en el grupo
+      $alumnos=DB::table('alumnos')
+         ->select('alumnos.*')
+         ->paginate(5);
+      return view('agregarAlumnoGrupo', compact('alumnos'));
    }
 }
 
