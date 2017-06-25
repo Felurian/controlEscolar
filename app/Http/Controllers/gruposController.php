@@ -101,9 +101,9 @@ class gruposController extends Controller
          ->paginate(5);
       return view('agregarAlumnoGrupo', compact('alumnos'));
       */
-      $alumnos=DB::table('grupos_detalle')
+      $alumnos=DB::table('alumnos')
          ->where('grupos_detalle.grupo_id', '!=', $id)
-         ->leftJoin('alumnos', 'grupos_detalle.alumno_id', '=', 'alumnos.id')
+         ->leftJoin('grupos_detalle', 'alumnos.id', '=', 'grupos_detalle.alumno_id')
          ->select('alumnos.*')
          ->paginate(5);
       return view('agregarAlumnoGrupo', compact('alumnos'));
