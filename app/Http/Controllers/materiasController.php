@@ -39,7 +39,7 @@ class materiasController extends Controller
          ->select('materias.*')
          ->first();
 
-      return view('editarMaterias', compact('materia'));
+      return view('editarMateria', compact('materia'));
    }
    public function actualizar($id, Request $datos){
       $materia=Materias::find($id);

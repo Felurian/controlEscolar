@@ -47,10 +47,10 @@ Route::get('/registrarMateria', 'materiasController@registrar');
 
 Route::post('/guardarMateria', 'materiasController@guardar');
 
-Route::get('/consultarMaterias','materias@consultar');
+Route::get('/consultarMaterias','materiasController@consultar');
 
-Route::get('/eliminarMateria/{id}', 'materias@eliminar');
+Route::get('/eliminarMateria/{id}', 'materiasController@eliminar');
 
-Route::get('/editarMateria/{id}', 'materias@editar');
+Route::get('/editarMateria/{id}', 'materiasController@editar');
 
 Route::post('/actualizarMateria/{id}', 'materiasController@actualizar');

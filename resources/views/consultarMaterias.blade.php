@@ -12,6 +12,14 @@
 			<tr>
 				<td>{{$m->id}}</td>
 				<td>{{$m->nombre}}</td>
+				<td>
+					<a href="{{url('/editarMateria')}}/{{$m->id}}" class="btn btn-primary btn-xs">
+						<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+					</a>
+					<a href="{{url('/eliminarMateria')}}/{{$m->id}}" class="btn btn-danger btn-xs">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>	
+					</a>
+				</td>
 			</tr>
 		@endforeach
 	</thead>
