@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Grupos;
+use App\GruposDetalle;
 use DB;
 
 class gruposController extends Controller
@@ -38,8 +39,8 @@ class gruposController extends Controller
    public function editar($id){
       $grupo=DB::table('grupos')
          ->where('grupos.id', '=', $id)
-         ->join('materias', 'grupos.materia_id', '=', 'materia.id')
-         ->join('maestros', 'grupos.maestro_id', '=', 'maestro.id')
+         ->join('materias', 'grupos.materia_id', '=', 'materias.id')
+         ->join('maestros', 'grupos.maestro_id', '=', 'maestros.id')
          ->select('grupos.*', 'materias.nombre AS nom_materia', 'maestros.nombre AS nom_maestro')
          ->first();
       $materias=Materias::all();
@@ -48,7 +49,7 @@ class gruposController extends Controller
    }
    public function actualizar($id, Request $datos){
       $grupo=Grupos::find($id);
-      $grupo->materia=$datos->input('materia ');
+      $grupo->materia=$datos->input('materia');
       $grupo->maestro=$datos->input('maestro');
       $grupo->hora   =$datos->input('hora');
       $grupo->salon  =$datos->input('salon');
@@ -57,6 +58,28 @@ class gruposController extends Controller
       return redirect('consultarGrupos');
    }  
    
+   public function detalleGrupo($id){
+      $alumnos=DB::table('grupos_detalle')
+         ->where('grupos_detalle.grupo_id', '=', $id)
+         ->join('alumnos', 'grupos_detalle', '=', 'alumnos.id')
+         ->select('alumnos.*')
+         ->paginate(5);
+      $grupo=DB::table('grupos')
+         ->where('grupos.id', '=', $id)
+         ->join('materias', 'grupos.materia_id', '=', 'materias.id')
+         ->join('maestros', 'grupos.maestro_id', '=', 'maestros.id')
+         ->select('grupos.*', 'materias.nombre as nom_materia', 'maestros.nombre as nom_maestro')
+         ->paginate(5);
+      return view('detalleGrupo', 'alumnos', 'grupo');
+   }
+
+   public function eliminarAlumno($id){
+      return view('welcome');
+   }
+
+   public function agregarAlumno($id){
+      return view('welcome');
+   }
 }
 
 
