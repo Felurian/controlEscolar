@@ -16,7 +16,7 @@
 				<td>{{$a->nombre}}</td>
 				<td>{{$a->numero_control}}</td>
 				<td>
-					<a href="{{url('/guardarAlumnoGrupo')}}/{{$a->id}}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="bottom" title="Agregar Alumno">
+					<a href="{{url('/guardarAlumnoGrupo')}}/{{$grupo_id}}/{{$a->id}}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="bottom" title="Agregar Alumno">
 						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>	
 					</a>
 					

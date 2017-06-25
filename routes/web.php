@@ -73,6 +73,6 @@ Route::post('/eliminarAlumnoGrupo/{id}', 'gruposController@eliminarAlumno');
 
 Route::get('/agregarAlumnoGrupo/{id}', 'gruposController@agregarAlumno');
 
-Route::get('/guardarAlumnoGrupo/{id}', 'gruposController@guardarAlumno');
+Route::get('/guardarAlumnoGrupo/{grupo_id}/{alumno_id}', 'gruposController@guardarAlumno');
 
 
