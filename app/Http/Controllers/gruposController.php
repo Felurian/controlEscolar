@@ -4,19 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Grupos;
+use App\Materias;
+use App\Maestros;
 use DB;
 
 class gruposController extends Controller
 {
    
    public function registrar(){
-      return view('registrarGrupo');
+      $materias=Materias::all();
+      $maestros=Maestros::all();
+      return view('registrarGrupo', compact('materias', 'maestros'));
    }
 
    public function guardar(Request $datos){
       $grupo= new Grupos();
-      $grupo->materia=$datos->input('materia');
-      $grupo->maestro=$datos->input('maestro');
+      $grupo->materia_id=$datos->input('materia');
+      $grupo->maestro_id=$datos->input('maestro');
       $grupo->hora   =$datos->input('hora');
       $grupo->salon  =$datos->input('salon');
       $grupo->save();
@@ -38,8 +42,8 @@ class gruposController extends Controller
    public function editar($id){
       $grupo=DB::table('grupos')
          ->where('grupos.id', '=', $id)
-         ->join('materias', 'grupos.materia_id', '=', 'materia.id')
-         ->join('maestros', 'grupos.maestro_id', '=', 'maestro.id')
+         ->join('materias', 'grupos.materia_id', '=', 'materias.id')
+         ->join('maestros', 'grupos.maestro_id', '=', 'maestros.id')
          ->select('grupos.*', 'materias.nombre AS nom_materia', 'maestros.nombre AS nom_maestro')
          ->first();
       $materias=Materias::all();
@@ -48,8 +52,8 @@ class gruposController extends Controller
    }
    public function actualizar($id, Request $datos){
       $grupo=Grupos::find($id);
-      $grupo->materia=$datos->input('materia ');
-      $grupo->maestro=$datos->input('maestro');
+      $grupo->materia_id=$datos->input('materia');
+      $grupo->maestro_id=$datos->input('maestro');
       $grupo->hora   =$datos->input('hora');
       $grupo->salon  =$datos->input('salon');
       $grupo->save();
