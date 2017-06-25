@@ -113,8 +113,8 @@ class gruposController extends Controller
       */
    }
 
-   public function guardarAlumno($aid, $gid){
-      return dd($gid);
+   public function guardarAlumno($grupo_id, $alumno_id){
+      return view('welcome');
    }
 }
 
