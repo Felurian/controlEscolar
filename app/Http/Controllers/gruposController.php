@@ -112,6 +112,10 @@ class gruposController extends Controller
       return view('agregarAlumnoGrupo', compact('alumnos'));
       */
    }
+
+   public function guardarAlumno($aid, $gid){
+      dd($gid);
+   }
 }
 
 
