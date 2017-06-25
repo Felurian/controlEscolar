@@ -89,11 +89,12 @@ class gruposController extends Controller
          ->select('alumnos.*')
          ->paginate(5);
       // TODO: solo mostrar alumnos no en el grupo
+      */
       $alumnos=DB::table('alumnos')
          ->select('alumnos.*')
          ->paginate(5);
       return view('agregarAlumnoGrupo', compact('alumnos'));
-      
+      /*
       $alumnos=DB::table('grupos_detalle')
          ->where('grupos_detalle.grupo_id', '!=', $id)
          ->leftJoin('alumnos', 'grupos_detalle.alumno_id', '=', 'alumnos.id')
@@ -101,12 +102,14 @@ class gruposController extends Controller
          ->paginate(5);
       return view('agregarAlumnoGrupo', compact('alumnos'));
       */
+      /*
       $alumnos=DB::table('alumnos')
          ->where('grupos_detalle.grupo_id', '!=', $id)
          ->leftJoin('grupos_detalle', 'alumnos.id', '=', 'grupos_detalle.alumno_id')
          ->select('alumnos.*')
          ->paginate(5);
       return view('agregarAlumnoGrupo', compact('alumnos'));
+      */
    }
 }
 
