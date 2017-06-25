@@ -30,6 +30,8 @@
             <li><a href="{{url('/consultarAlumnos')}}">Consultar Alumnos</a></li>
             <li><a href="{{url('/registrarMaestro')}}">Registrar Maestro</a></li>
             <li><a href="{{url('/consultarMaestros')}}">Consultar Maestros</a></li>
+            <li><a href="{{url('/registrarMateria')}}">Registrar Materia</a></li>
+            <li><a href="{{url('/consultarMaterias')}}">Consultar Materias</a></li>
             <li><a href="#">Something else here</a></li>
             <li class="divider"></li>
             <li><a href="#">Separated link</a></li>
