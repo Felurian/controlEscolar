@@ -54,3 +54,17 @@ Route::get('/eliminarMateria/{id}', 'materiasController@eliminar');
 Route::get('/editarMateria/{id}', 'materiasController@editar');
 
 Route::post('/actualizarMateria/{id}', 'materiasController@actualizar');
+
+			//GRUPOS
+Route::get('/registrarGrupo', 'gruposController@registrar');
+
+Route::post('/guardarGrupo', 'gruposController@guardar');
+
+Route::get('/consultarGrupos','gruposController@consultar');
+
+Route::get('/eliminarGrupo/{id}', 'gruposController@eliminar');
+
+Route::get('/editarGrupo/{id}', 'gruposController@editar');
+
+Route::post('/actualizarGrupo/{id}', 'gruposController@actualizar');
+
