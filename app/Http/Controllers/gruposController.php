@@ -86,35 +86,22 @@ class gruposController extends Controller
    }
 
    public function agregarAlumno($id){
-      /*
-      $alumnos_en_grupo=DB::table('grupos_detalle')
+      $inscritos=DB::table('alumnos')
+         ->leftJoin('grupos_detalle', 'alumnos.id', '=', 'grupos_detalle.alumno_id')
          ->where('grupos_detalle.grupo_id', '=', $id)
-         ->join('alumnos', 'grupos_detalle.alumno_id', '=', 'alumnos.id')
          ->select('alumnos.*')
-         ->paginate(5);
-      // TODO: solo mostrar alumnos no en el grupo
-      */
+         ->get();
+      $inscritos = $inscritos->all(); // convertir de Collection a arreglo
+      $inscrito_ids = [];
+      foreach ($inscritos as $e) {
+         $inscrito_ids[] = $e->id;
+      }
       $alumnos=DB::table('alumnos')
          ->select('alumnos.*')
+         ->whereNotIn('id', $inscrito_ids)
          ->paginate(5);
       $grupo_id = $id;
       return view('agregarAlumnoGrupo', compact('alumnos', 'grupo_id'));
-      /*
-      $alumnos=DB::table('grupos_detalle')
-         ->where('grupos_detalle.grupo_id', '!=', $id)
-         ->leftJoin('alumnos', 'grupos_detalle.alumno_id', '=', 'alumnos.id')
-         ->select('alumnos.*')
-         ->paginate(5);
-      return view('agregarAlumnoGrupo', compact('alumnos'));
-      */
-      /*
-      $alumnos=DB::table('alumnos')
-         ->where('grupos_detalle.grupo_id', '!=', $id)
-         ->leftJoin('grupos_detalle', 'alumnos.id', '=', 'grupos_detalle.alumno_id')
-         ->select('alumnos.*')
-         ->paginate(5);
-      return view('agregarAlumnoGrupo', compact('alumnos'));
-      */
    }
 
    public function guardarAlumno($grupo_id, $alumno_id){

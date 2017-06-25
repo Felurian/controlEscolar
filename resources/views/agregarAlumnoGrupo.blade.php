@@ -29,6 +29,6 @@
 	{{ $alumnos->links() }}
 </div>
 <div>
-	<a href="{{url('/')}}" class="btn btn-danger">Cancelar</a>
+	<a href="{{url('/consultarGrupos')}}" class="btn btn-danger">Cancelar</a>
 </div>
 @stop
