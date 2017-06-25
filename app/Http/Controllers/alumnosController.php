@@ -37,10 +37,8 @@ class alumnosController extends Controller
    }
 
    public function eliminar($id){
-    /*
       $alumno=Alumnos::find($id);
       $alumno->delete();
-      */
       return redirect('consultarAlumnos');
    }
 

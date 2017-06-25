@@ -20,7 +20,7 @@
 				<td>{{$a->nombre}}</td>
 				<td>{{$a->numero_control}}</td>
 				<td>
-					<a href="{{url('/eliminarAlumnoGrupo')}}/{{$grupo->id}}" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="Eliminar">
+					<a href="{{url('/eliminarAlumnoGrupo')}}/{{$grupo->id}}/{{$a->id}}" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="Eliminar">
 						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>	
 					</a>
 					

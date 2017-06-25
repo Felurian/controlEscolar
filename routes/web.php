@@ -69,7 +69,7 @@ Route::post('/actualizarGrupo/{id}', 'gruposController@actualizar');
 
 Route::get('/detalleGrupo/{id}', 'gruposController@detalleGrupo');
 
-Route::post('/eliminarAlumnoGrupo/{id}', 'gruposController@eliminarAlumno');
+Route::get('/eliminarAlumnoGrupo/{group_id}/{alumno_id}', 'gruposController@eliminarAlumno');
 
 Route::get('/agregarAlumnoGrupo/{id}', 'gruposController@agregarAlumno');
 

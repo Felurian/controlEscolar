@@ -77,9 +77,12 @@ class gruposController extends Controller
       return view('detalleGrupo', compact('alumnos', 'grupo'));
    }
 
-   public function eliminarAlumno($id){
-      
-      return redirect('detalleGrupo');
+   public function eliminarAlumno($grupo_id, $alumno_id){
+      DB::table('grupos_detalle')
+         ->where('grupo_id', '=', $grupo_id)
+         ->where('alumno_id', '=', $alumno_id)
+         ->delete();
+      return redirect('detalleGrupo/'.$grupo_id);
    }
 
    public function agregarAlumno($id){
@@ -119,7 +122,7 @@ class gruposController extends Controller
       $entrada->grupo_id = $grupo_id;
       $entrada->alumno_id = $alumno_id;
       $entrada->save();
-      return redirect('detalleGrupo');
+      return redirect('detalleGrupo/'.$grupo_id);
    }
 }
 
