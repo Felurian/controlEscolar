@@ -13,10 +13,10 @@
 		@foreach($alumnos as $a)
 			<tr>
 				<td>{{$a->id}}</td>
-				<td>{{$a->nom_alumno}}</td>
-				<td>{{$a->num_alumno}}</td>
+				<td>{{$a->nombre}}</td>
+				<td>{{$a->numero_control}}</td>
 				<td>
-					<a href="{{url('/guardarAlumnoGrupo')}}/{{$g->id}}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="bottom" title="Agregar Alumno">
+					<a href="{{url('/guardarAlumnoGrupo')}}/{{$a->id}}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="bottom" title="Agregar Alumno">
 						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>	
 					</a>
 					
