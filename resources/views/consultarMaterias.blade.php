@@ -6,7 +6,9 @@
 		<tr>
 			<th>ID</th>
 			<th>Nombre</th>
-			<th>Opciones</th>
+			<th>
+				<a href="{{url('/pdfMaterias')}}">PDF</a>
+			</th>
 		</tr>
 		@foreach($materias as $m)
 			<tr>

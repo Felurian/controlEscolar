@@ -9,7 +9,7 @@
 			<th>RFC</th>
 			<th>Edad</th>
 			<th>Sexo</th>
-			<th>Opciones</th>
+			<th><a href="{{url('/pdfMaestros')}}">PDF</a></th>
 		</tr>
 		@foreach($maestros as $m)
 			<tr>

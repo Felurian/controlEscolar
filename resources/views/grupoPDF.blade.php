@@ -8,12 +8,15 @@
 			padding-left: 50px;
 			color:black;
 			text-align: center;
-			border: 1px solid black;
 		}
 		.tabla{
 			width: 100%;
 			border-collapse: collapse;
 			margin-top: 10 px;
+		}
+		.titulos
+		{
+			font-weight: bold;
 		}
 		th{
 			background-color: #4CAF50;
@@ -30,14 +33,23 @@
 			height: 80px;
 			width: 80px;
 		}
-		#seccion1
+		#primeraColumna label
 		{
-			border: 1px solid black;
+			padding-right: 20px;
 		}
-		#seccion2
+		#seccion1{  }
+		#seccion2{	}
+		#seccion2 article
 		{
-			border: 1px solid black;
-			margin-top: 50 px;
+			display: inline-block;
+			width: 48%;
+			vertical-align: top;
+			margin-bottom: 0px;
+		}
+		#segundaColumna label
+		{
+			margin-left:250px;
+			
 		}
 		tr:nth-child(even) {background-color: #f2f2f2}
 	</style>
@@ -47,18 +59,22 @@
 	<img src="img/logo.png" width="150px" alt="">
 	<h1 class="encabezado">Instituto Tecnologico de Culiacán</h1>
 </section>
-
+	<br><br>
 	<hr>
-	<br>
 	<section id="seccion2">
-		<label>{{$grupo->id}}</label>
-		<label>{{$grupo->nom_materia}}</label>
-		<label>{{$grupo->nom_maestro}}</label>
-		<label>{{$grupo->hora}}</label>
-		<label>{{$grupo->salon}}</label>
+		<article id="primeraColumna">
+			<label class="titulos">MATERIA</label> <br>
+			<label>{{$grupo->id_materia}}</label>
+			<label>{{$grupo->nom_materia}}</label><br><br>
+			<label class="titulos">DOCENTE</label> <br>
+			<label>{{$grupo->id_maestro}}</label>
+			<label>{{$grupo->nom_maestro}}</label>
+		</article>
+		<article id="segundaColumna">
+			<label class="titulos">GRUPO</label> 
+			<label>{{$grupo->salon}} / {{$grupo->hora}}</label>
+		</article>
 	</section>
-	
-
 	<table class="tabla">
 	<thead>
 		<tr>

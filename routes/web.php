@@ -43,6 +43,9 @@ Route::get('/editarMaestro/{id}', 'maestrosController@editar');
 
 Route::post('/actualizarMaestro/{id}', 'maestrosController@actualizar');
 
+Route::get('/pdfMaestros', 'maestrosController@pdf');
+
+
 			//MATERIAS
 Route::get('/registrarMateria', 'materiasController@registrar');
 
@@ -55,6 +58,9 @@ Route::get('/eliminarMateria/{id}', 'materiasController@eliminar');
 Route::get('/editarMateria/{id}', 'materiasController@editar');
 
 Route::post('/actualizarMateria/{id}', 'materiasController@actualizar');
+
+Route::get('/pdfMaterias', 'materiasController@pdf');
+
 
 			//GRUPOS
 Route::get('/registrarGrupo', 'gruposController@registrar');
