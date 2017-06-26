@@ -66,7 +66,10 @@ class alumnosController extends Controller
 
    public function pdf()
    {
-      $alumnos=Alumnos::all();
+      $alumnos=DB::table('alumnos')
+         ->join('carreras', 'alumnos.carrera_id', '=', 'carreras.id')
+         ->select('alumnos.*', 'carreras.nombre AS nom_carrera')
+         ->get();
       $vista=view('alumnosPDF', compact('alumnos'));
 
       $pdf=\App::make('dompdf.wrapper');
