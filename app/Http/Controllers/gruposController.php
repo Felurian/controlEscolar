@@ -118,7 +118,6 @@ class gruposController extends Controller
          ->join('alumnos', 'grupos_detalle.alumno_id', '=', 'alumnos.id')
          ->select('alumnos.*')
          ->get();
-      dd($alumnos);
       $grupo=DB::table('grupos')
          ->where('grupos.id', '=', $gid)
          ->join('materias', 'grupos.materia_id', '=', 'materias.id')
