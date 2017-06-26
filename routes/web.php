@@ -28,7 +28,6 @@ Route::get('/editarAlumno/{id}', 'alumnosController@editar');
 
 Route::get('/pdfAlumnos', 'alumnosController@pdf');
 
-
 Route::post('/actualizarAlumno/{id}', 'alumnosController@actualizar');
 
 				//MAESTROS
@@ -78,4 +77,5 @@ Route::get('/agregarAlumnoGrupo/{id}', 'gruposController@agregarAlumno');
 
 Route::get('/guardarAlumnoGrupo/{grupo_id}/{alumno_id}', 'gruposController@guardarAlumno');
 
+Route::get('/pdfGrupo/{id}', 'gruposController@pdf');
 

@@ -9,7 +9,7 @@
 			<th>Maestro</th>
 			<th>Hora</th>
 			<th>Salón</th>
-			<th>Opciones</th>
+			<th><a href="{{url('/pdfGrupo/{id}')}}">PDF</a></th>
 		</tr>
 		@foreach($grupos as $g)
 			<tr>

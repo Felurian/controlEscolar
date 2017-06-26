@@ -2,7 +2,7 @@
 <html lan="en">
 <head>
 	<meta charset="utf-8">
-	<title>Reporte de Alumnos</title>
+	<title>Reporte de Grupo</title>
 	<style type="">
 		.encabezado{
 			color:black;
@@ -24,18 +24,23 @@
 	</style>
 </head>
 <body>
-	<h1 class="encabezado">Lista de Alumnos</h1>
+<img src="img/logo.png" width="150px" alt="">
+	<h1 class="encabezado">Instituto Tecnologico de Culiacán</h1>
 	<hr>
 	<br>
+	<label>{{$grupo->id}}</label>
+	<label>{{$grupo->nom_materia}}</label>
+	<label>{{$grupo->nom_maestro}}</label>
+	<label>{{$grupo->hora}}</label>
+	<label>{{$grupo->salon}}</label>
+
 	<table class="tabla">
 	<thead>
 		<tr>
 			<th>ID</th>
 			<th>Nombre</th>
 			<th>Número de control</th>
-			<th>Edad</th>
-			<th>Sexo</th>
-			<th>Carrera</th>
+			
 			
 		</tr>
 		@foreach($alumnos as $a)
@@ -43,15 +48,6 @@
 				<td>{{$a->id}}</td>
 				<td>{{$a->nombre}}</td>
 				<td>{{$a->numero_control}}</td>
-				<td>{{$a->edad}}</td>
-				<td>
-					@if($a->sexo==0)
-						Femenino
-					@else
-						Masculino
-					@endif
-				</td>
-				<td>{{$a->nom_carrera}}</td>
 			</tr>
 		@endforeach
 	</thead>
@@ -59,6 +55,3 @@
 
 </body>
 </html>
-
-
-
