@@ -2,10 +2,10 @@
 
 @section('contenido')
 
-<label>{{$grupo->nom_materia}}</label>
-<label>{{$grupo->nom_maestro}}</label>
-<label>{{$grupo->hora}}</label>
-<label>{{$grupo->salon}}</label>
+<label>Materia:  {{$grupo->nom_materia}}</label><br>
+<label>Maestro:  {{$grupo->nom_maestro}}</label><br>
+<label>Horario:  {{$grupo->hora}}</label><br>
+<label>Salón:    {{$grupo->salon}}</label><br>
 <table class="table table-striped">
 	<thead>
 		<tr>

@@ -10,7 +10,9 @@
 			<th>Edad</th>
 			<th>Sexo</th>
 			<th>Carrera</th>
-			<th>Opciones</th>
+			<th>
+				<a href="{{url('/pdfAlumnos')}}">PDF</a>
+			</th>
 		</tr>
 		@foreach($alumnos as $a)
 			<tr>

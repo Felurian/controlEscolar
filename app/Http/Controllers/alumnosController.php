@@ -63,6 +63,16 @@ class alumnosController extends Controller
 
       return redirect('agregarAlumnoGrupo');
    }
+
+   public function pdf()
+   {
+      $alumnos=Alumnos::all();
+      $vista=view('alumnosPDF', compact('alumnos'));
+
+      $pdf=\App::make('dompdf.wrapper');
+      $pdf->loadHTML($vista);
+      return $pdf->stream('ListaAlumnos.pdf');
+   }
 }
 
 
