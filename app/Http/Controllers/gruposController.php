@@ -128,7 +128,7 @@ class gruposController extends Controller
 
       $pdf=\App::make('dompdf.wrapper');
       $pdf->loadHTML($vista);
-      return $pdf->stream('ListaAlumnos.pdf');
+      return $pdf->stream('ListaGrupo.pdf');
    }
 }
 

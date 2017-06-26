@@ -48,6 +48,15 @@ class materiasController extends Controller
 
       return redirect('consultarMaterias');
    }  
+
+   public function pdf(){
+      $materias=Materias::all();
+      $vista=view('materiasPDF', compact('materias'));
+
+      $pdf=\App::make('dompdf.wrapper');
+      $pdf->loadHTML($vista);
+      return $pdf->stream('ListaMaterias.pdf');
+   }
    
 }
 

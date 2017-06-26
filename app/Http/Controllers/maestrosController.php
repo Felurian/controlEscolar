@@ -53,6 +53,15 @@ class maestrosController extends Controller
 
       return redirect('consultarMaestros');
    }  
+
+   public function pdf(){
+      $maestros=Maestros::all();
+      $vista=view('maestrosPDF', compact('maestros'));
+
+      $pdf=\App::make('dompdf.wrapper');
+      $pdf->loadHTML($vista);
+      return $pdf->stream('ListaMaestros.pdf');
+   }
    
 }
 
