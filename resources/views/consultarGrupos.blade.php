@@ -28,7 +28,7 @@
 					<a href="{{url('/eliminarGrupo')}}/{{$g->id}}" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="Eliminar">
 						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>	
 					</a>
-					<a href="{{url('/pdfGrupo/{$g->id}')}}">PDF</a>
+					<a href="{{url('/pdfGrupo')}}/{{$g->id}}">PDF</a>
 
 					
 				</td>
