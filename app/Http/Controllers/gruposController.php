@@ -111,6 +111,26 @@ class gruposController extends Controller
       $entrada->save();
       return redirect('detalleGrupo/'.$grupo_id);
    }
+
+   public function pdf($gid){
+      $alumnos=DB::table('grupos_detalle')
+         ->where('grupos_detalle.grupo_id', '=', $id)
+         ->join('alumnos', 'grupos_detalle.alumno_id', '=', 'alumnos.id')
+         ->select('alumnos.*')
+         ->get();
+      $grupo=DB::table('grupos')
+         ->where('grupos.id', '=', $id)
+         ->join('materias', 'grupos.materia_id', '=', 'materias.id')
+         ->join('maestros', 'grupos.maestro_id', '=', 'maestros.id')
+         ->select('grupos.*', 'materias.nombre as nom_materia', 'maestros.nombre as nom_maestro')
+         ->first();
+      $vista=view('grupoPDF', compact('alumnos', 'grupo'));
+
+      $pdf=\App::make('dompdf.wrapper');
+      $pdf->loadHTML($vista);
+      return $pdf->stream('ListaAlumnos.pdf');
+
+   }
 }
 
 
