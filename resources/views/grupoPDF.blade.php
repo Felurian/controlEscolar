@@ -28,11 +28,7 @@
 	<h1 class="encabezado">Instituto Tecnologico de Culiacán</h1>
 	<hr>
 	<br>
-	<label>{{$grupo->id}}</label>
-	<label>{{$grupo->nom_materia}}</label>
-	<label>{{$grupo->nom_maestro}}</label>
-	<label>{{$grupo->hora}}</label>
-	<label>{{$grupo->salon}}</label>
+	
 
 	<table class="tabla">
 	<thead>
