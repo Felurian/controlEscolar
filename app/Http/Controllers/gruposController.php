@@ -123,7 +123,7 @@ class gruposController extends Controller
          ->join('materias', 'grupos.materia_id', '=', 'materias.id')
          ->join('maestros', 'grupos.maestro_id', '=', 'maestros.id')
          ->select('grupos.*', 'materias.nombre as nom_materia', 'maestros.nombre as nom_maestro')
-         ->get();
+         ->first();
       $vista=view('grupoPDF', compact('alumnos', 'grupo'));
 
       $pdf=\App::make('dompdf.wrapper');
