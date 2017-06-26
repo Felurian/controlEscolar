@@ -9,7 +9,7 @@
 			<th>Maestro</th>
 			<th>Hora</th>
 			<th>Salón</th>
-			<th><a href="{{url('/pdfGrupo/{id}')}}">PDF</a></th>
+			<th>PDF</th>
 		</tr>
 		@foreach($grupos as $g)
 			<tr>
@@ -28,6 +28,8 @@
 					<a href="{{url('/eliminarGrupo')}}/{{$g->id}}" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="Eliminar">
 						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>	
 					</a>
+					<a href="{{url('/pdfGrupo/{id}')}}">PDF</a>
+
 					
 				</td>
 			</tr>
