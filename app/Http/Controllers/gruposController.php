@@ -122,13 +122,13 @@ class gruposController extends Controller
          ->where('grupos.id', '=', $gid)
          ->join('materias', 'grupos.materia_id', '=', 'materias.id')
          ->join('maestros', 'grupos.maestro_id', '=', 'maestros.id')
-         ->select('grupos.*', 'materias.nombre as nom_materia', 'maestros.nombre as nom_maestro')
+         ->select('grupos.*', 'materias.nombre as nom_materia', 'materias.id as id_materia', 'maestros.nombre as nom_maestro', 'maestros.id as id_maestro')
          ->first();
       $vista=view('grupoPDF', compact('alumnos', 'grupo'));
 
       $pdf=\App::make('dompdf.wrapper');
       $pdf->loadHTML($vista);
-      return $pdf->stream('ListaAlumnos.pdf');
+      return $pdf->stream('ListaGrupo.pdf');
    }
 }
 
