@@ -114,12 +114,12 @@ class gruposController extends Controller
 
    public function pdf($gid){
       $alumnos=DB::table('grupos_detalle')
-         ->where('grupos_detalle.grupo_id', '=', $id)
+         ->where('grupos_detalle.grupo_id', '=', $gid)
          ->join('alumnos', 'grupos_detalle.alumno_id', '=', 'alumnos.id')
          ->select('alumnos.*')
          ->get();
       $grupo=DB::table('grupos')
-         ->where('grupos.id', '=', $id)
+         ->where('grupos.id', '=', $gid)
          ->join('materias', 'grupos.materia_id', '=', 'materias.id')
          ->join('maestros', 'grupos.maestro_id', '=', 'maestros.id')
          ->select('grupos.*', 'materias.nombre as nom_materia', 'maestros.nombre as nom_maestro')
@@ -129,7 +129,6 @@ class gruposController extends Controller
       $pdf=\App::make('dompdf.wrapper');
       $pdf->loadHTML($vista);
       return $pdf->stream('ListaAlumnos.pdf');
-
    }
 }
 
