@@ -32,9 +32,13 @@
 					<a href="{{url('/editarAlumno')}}/{{$a->id}}" class="btn btn-primary btn-xs">
 						<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 					</a>
+					<a href="{{url('/cargarMaterias')}}/{{$a->id}}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="bottom" title="Cargar Materias">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>	
+					</a>
 					<a href="{{url('/eliminarAlumno')}}/{{$a->id}}" class="btn btn-danger btn-xs">
 						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>	
 					</a>
+
 				</td>
 			</tr>
 		@endforeach

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Materias;
+use App\Alumnos;
+
 use DB;
 
 class materiasController extends Controller
@@ -56,6 +58,33 @@ class materiasController extends Controller
       $pdf=\App::make('dompdf.wrapper');
       $pdf->loadHTML($vista);
       return $pdf->stream('ListaMaterias.pdf');
+   }
+
+   public function cargar($id)
+   {
+      $alumno = Alumnos::find($id);
+      $gruposid=DB::table('grupos_detalle')
+         ->join('grupos','grupos.id','=','grupos_detalle.grupo_id')
+         ->where('grupos_detalle.alumno_id','=',$id)
+         ->pluck('grupos.id');
+         
+
+      $lista=DB::table('grupos')
+         ->whereNotIn('grupos.id', $gruposid)
+         ->join('materias','materias.id','=','grupos.materia_id')
+         ->join('maestros','maestros.id','=','grupos.maestro_id')
+         ->select('maestros.nombre AS nom_maestro','materias.nombre','grupos.hora')
+         ->get();
+
+      $materias=DB::table('grupos')
+         ->whereIn('grupos.id', $gruposid)
+         ->join('materias','materias.id','=','grupos.materia_id')
+         ->join('maestros','maestros.id','=','grupos.maestro_id')
+         ->select('materias.id AS mid','grupos.id AS gid','materias.nombre','grupos.hora','grupos.salon')
+         ->get();
+
+
+      return view('cargarMaterias', compact('lista','materias','alumno'));
    }
    
 }

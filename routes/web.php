@@ -30,6 +30,8 @@ Route::get('/pdfAlumnos', 'alumnosController@pdf');
 
 Route::post('/actualizarAlumno/{id}', 'alumnosController@actualizar');
 
+
+
 				//MAESTROS
 Route::get('/registrarMaestro', 'maestrosController@registrar');
 
@@ -60,6 +62,9 @@ Route::get('/editarMateria/{id}', 'materiasController@editar');
 Route::post('/actualizarMateria/{id}', 'materiasController@actualizar');
 
 Route::get('/pdfMaterias', 'materiasController@pdf');
+
+Route::get('/cargarMaterias/{id}', 'materiasController@cargar');
+
 
 
 			//GRUPOS

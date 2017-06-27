@@ -13,6 +13,7 @@
 			width: 100%;
 			border-collapse: collapse;
 			margin-top: 10 px;
+			border: 1px solid black;
 		}
 		.titulos
 		{
@@ -26,6 +27,8 @@
 			
 			padding: 15px;
     		text-align: left;
+			border: 1px solid black;
+
 		}
 		img
 		{
@@ -51,7 +54,6 @@
 			margin-left:250px;
 			
 		}
-		tr:nth-child(even) {background-color: #f2f2f2}
 	</style>
 </head>
 <body>
@@ -65,7 +67,7 @@
 		<article id="primeraColumna">
 			<label class="titulos">MATERIA</label> <br>
 			<label>{{$grupo->id_materia}}</label>
-			<label>{{$grupo->nom_materia}}</label><br><br>
+			<label>{{$grupo->nom_materia}}</label><br>
 			<label class="titulos">DOCENTE</label> <br>
 			<label>{{$grupo->id_maestro}}</label>
 			<label>{{$grupo->nom_maestro}}</label>
@@ -81,7 +83,10 @@
 			<th>ID</th>
 			<th>Nombre</th>
 			<th>Número de control</th>
-			
+			@for($i=0;$i<10;$i++)
+			<th></th>
+		
+			@endfor
 			
 		</tr>
 		@foreach($alumnos as $a)
@@ -89,6 +94,10 @@
 				<td>{{$a->id}}</td>
 				<td>{{$a->nombre}}</td>
 				<td>{{$a->numero_control}}</td>
+				@for($i=0;$i<10;$i++)
+					<td></td>
+		
+			@endfor
 			</tr>
 		@endforeach
 	</thead>
