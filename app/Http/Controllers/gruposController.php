@@ -130,6 +130,27 @@ class gruposController extends Controller
       $pdf->loadHTML($vista);
       return $pdf->stream('ListaGrupo.pdf');
    }
+
+   public function registrarCalificaciones($id)
+   {
+      $grupo=DB::table('grupos')
+         ->join('materias', 'grupos.materia_id', '=', 'materias.id')
+         ->join('maestros', 'grupos.maestro_id', '=', 'maestros.id')
+         ->select('grupos.*', 'materias.nombre AS nom_materia', 'maestros.nombre AS nom_maestro')
+         ->where('grupos.id','=',$id)
+         ->first();
+      $alumnos = DB::table('grupos_detalle')
+         ->where('grupos_detalle.grupo_id', '=', $id)
+         ->join('alumnos', 'grupos_detalle.alumno_id', '=', 'alumnos.id')
+         ->select('alumnos.*')
+         ->get();
+      return view('/registrarCalificaciones', compact('grupo','alumnos'));
+   }
+
+   public function guardarCalificaciones($id, Request $datos)
+   {
+     
+   }
 }
 
 

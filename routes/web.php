@@ -70,9 +70,6 @@ Route::post('/cargarGrupo/{id}', 'materiasController@cargarGrupo');
 Route::get('/quitarGrupo/{grupo_id}/{alumno_id}', 'materiasController@quitarGrupo');
 
 
-
-
-
 			//GRUPOS
 Route::get('/registrarGrupo', 'gruposController@registrar');
 
@@ -95,6 +92,10 @@ Route::get('/agregarAlumnoGrupo/{id}', 'gruposController@agregarAlumno');
 Route::get('/guardarAlumnoGrupo/{grupo_id}/{alumno_id}', 'gruposController@guardarAlumno');
 
 Route::get('/pdfGrupo/{id}', 'gruposController@pdf');
+
+Route::get('/registrarCalificaciones/{id}', 'gruposController@registrarCalificaciones');
+
+Route::POST('/guardarCalificaciones/{id}', 'gruposController@guardarCalificaciones');
 
 
 
