@@ -3,15 +3,19 @@
 @section('contenido')
 <h2>Nombre: {{$alumno->nombre}}</h2>
 <hr>
-<div class="form-group">
-	<label for="materia">Selecciona la materia:</label>
-	<select name="materia" class="form-control">
-		<option value="0">Selecciona la materia</option>
-		@foreach($lista as $m)
-			<option value="{{$m->nombre}}">{{$m->nombre}} {{$m->nom_maestro}}</option>
-		@endforeach
-	</select>
-</div>
+<form action="{{url('/cargarGrupo')}}/{{$alumno->id}}" method="POST">
+<input id="token" type="hidden" name="_token" value="{{ csrf_token() }}">
+	<div class="form-group">
+		<label for="materia">Selecciona la materia:</label>
+		<select name="grupo_id" class="form-control">
+			<option value="0">Selecciona la materia</option>
+			@foreach($lista as $m)
+				<option value="{{$m->gid}}">{{$m->nombre}} - {{$m->nom_maestro}}</option>
+			@endforeach
+		</select>
+	</div>
+	<button class="btn btn-primary">Cargar</button>
+</form>
 <h2>Materias Cargadas</h2>
 <hr>
 <div class="row">
@@ -35,7 +39,7 @@
 					<td>{{$mt->gid}}</td>
 					<td>{{$mt->salon}}</td>
 					<td>{{$mt->hora}}</td>
-					<td><a href="" class="btn btn-danger btn-xs">
+					<td><a href="{{url('/quitarGrupo')}}/{{$mt->gid}}/{{$alumno->id}}" class="btn btn-danger btn-xs">
 						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>	
 					</a></td>
 				</tr>

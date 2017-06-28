@@ -22,7 +22,7 @@ class alumnosController extends Controller
    		$alumno->sexo=$datos->input('sexo');
    		$alumno->carrera_id=$datos->input('carrera');
    		$alumno->save();
-
+         flash('¡Se registró correctamente el Alumn@')->success();
    		return redirect('/consultarAlumnos');
    }
 

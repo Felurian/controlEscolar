@@ -65,6 +65,12 @@ Route::get('/pdfMaterias', 'materiasController@pdf');
 
 Route::get('/cargarMaterias/{id}', 'materiasController@cargar');
 
+Route::post('/cargarGrupo/{id}', 'materiasController@cargarGrupo');
+
+Route::get('/quitarGrupo/{grupo_id}/{alumno_id}', 'materiasController@quitarGrupo');
+
+
+
 
 
 			//GRUPOS
@@ -89,4 +95,6 @@ Route::get('/agregarAlumnoGrupo/{id}', 'gruposController@agregarAlumno');
 Route::get('/guardarAlumnoGrupo/{grupo_id}/{alumno_id}', 'gruposController@guardarAlumno');
 
 Route::get('/pdfGrupo/{id}', 'gruposController@pdf');
+
+
 

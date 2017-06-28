@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Materias;
 use App\Alumnos;
+use App\GruposDetalle;
 
 use DB;
 
@@ -73,7 +74,7 @@ class materiasController extends Controller
          ->whereNotIn('grupos.id', $gruposid)
          ->join('materias','materias.id','=','grupos.materia_id')
          ->join('maestros','maestros.id','=','grupos.maestro_id')
-         ->select('maestros.nombre AS nom_maestro','materias.nombre','grupos.hora')
+         ->select('maestros.nombre AS nom_maestro','materias.nombre','grupos.hora','grupos.id AS gid')
          ->get();
 
       $materias=DB::table('grupos')
@@ -86,7 +87,21 @@ class materiasController extends Controller
 
       return view('cargarMaterias', compact('lista','materias','alumno'));
    }
-   
+   public function cargarGrupo($id, Request $datos)
+   {
+      $grupos_detalle = new GruposDetalle();
+      $grupos_detalle->alumno_id=$id;
+      $grupos_detalle->grupo_id=$datos->input('grupo_id');
+      $grupos_detalle->save();
+      return redirect('/cargarMaterias/'.$id);
+   }
+   public function quitarGrupo($grupo_id, $alumno_id){
+      DB::table('grupos_detalle')
+         ->where('grupo_id', '=', $grupo_id)
+         ->where('alumno_id', '=', $alumno_id)
+         ->delete();
+      return redirect('cargarMaterias/'.$alumno_id);
+   }
 }
 
 
