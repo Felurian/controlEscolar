@@ -2,6 +2,11 @@
 
 @section('contenido')
 @include('flash::message')
+<script type="text/javascript">
+	setTimeout(function(){
+		$(".alert").fadeOut(1500);
+	},1500);
+</script>
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -51,10 +56,5 @@
 <div class="text-center">
 	{{ $alumnos->links() }}
 </div>
-<script type="text/javascript">
-	setTimeout(function(){
-		$(".alert").fadeOut(1500);
-	},1500);
-</script>
 
 @stop

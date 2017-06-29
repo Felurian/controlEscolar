@@ -1,6 +1,12 @@
 @extends('master')
 
 @section('contenido')
+@include('flash::message')
+<script type="text/javascript">
+	setTimeout(function(){
+		$(".alert").fadeOut(1500);
+	},1500);
+</script>
 <table class="table table-striped">
 	<thead>
 		<tr>

@@ -22,6 +22,7 @@ class materiasController extends Controller
          $materia->nombre=$datos->input('nombre');
          $materia->save();
 
+         flash('Datos guardados exitosamente')->success();
          return redirect('/consultarMaterias');
    }
    public function consultar(){
@@ -34,6 +35,8 @@ class materiasController extends Controller
    public function eliminar($id){
          $materia=Materias::find($id);
          $materia->delete();
+
+         flash('Datos eliminados exitosamente')->success();
          return redirect('consultarMaterias');
    }
    public function editar($id){
@@ -49,6 +52,7 @@ class materiasController extends Controller
       $materia->nombre=$datos->input('nombre');
       $materia->save();
 
+      flash('Datos guardados exitosamente')->success();
       return redirect('consultarMaterias');
    }  
 
@@ -93,6 +97,8 @@ class materiasController extends Controller
       $grupos_detalle->alumno_id=$id;
       $grupos_detalle->grupo_id=$datos->input('grupo_id');
       $grupos_detalle->save();
+      
+      flash('Datos guardados exitosamente')->success();
       return redirect('/cargarMaterias/'.$id);
    }
    public function quitarGrupo($grupo_id, $alumno_id){

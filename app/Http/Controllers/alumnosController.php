@@ -22,7 +22,7 @@ class alumnosController extends Controller
    		$alumno->sexo=$datos->input('sexo');
    		$alumno->carrera_id=$datos->input('carrera');
    		$alumno->save();
-         flash('¡Se registró correctamente el Alumn@')->success();
+         flash('¡Se registró correctamente el Alumno!')->success();
    		return redirect('/consultarAlumnos');
    }
 
@@ -39,6 +39,7 @@ class alumnosController extends Controller
    public function eliminar($id){
       $alumno=Alumnos::find($id);
       $alumno->delete();
+         flash('Alumno eliminado exitosamente')->success();
       return redirect('consultarAlumnos');
    }
 
@@ -61,6 +62,7 @@ class alumnosController extends Controller
       $alumno->carrera_id=$datos->input('carrera');
       $alumno->save();
 
+      flash('Datos guardados exitosamente')->success();
       return redirect('consultarAlumnos');
    }
 

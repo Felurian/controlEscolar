@@ -25,6 +25,7 @@ class gruposController extends Controller
       $grupo->hora   =$datos->input('hora');
       $grupo->salon  =$datos->input('salon');
       $grupo->save();
+      flash('Datos guardados exitosamente')->success();
       return redirect('/consultarGrupos');
    }
    public function consultar(){
@@ -38,6 +39,7 @@ class gruposController extends Controller
    public function eliminar($id){
       $grupo=Grupos::find($id);
       $grupo->delete();
+      flash('Datos eliminados exitosamente')->success();
       return redirect('consultarGrupos');
    }
    public function editar($id){
@@ -58,6 +60,7 @@ class gruposController extends Controller
       $grupo->hora      =$datos->input('hora');
       $grupo->salon     =$datos->input('salon');
       $grupo->save();
+      flash('Datos guardados exitosamente')->success();
 
       return redirect('consultarGrupos');
    }  
@@ -82,6 +85,7 @@ class gruposController extends Controller
          ->where('grupo_id', '=', $grupo_id)
          ->where('alumno_id', '=', $alumno_id)
          ->delete();
+      flash('Datos eliminados exitosamente')->success();
       return redirect('detalleGrupo/'.$grupo_id);
    }
 
@@ -109,6 +113,7 @@ class gruposController extends Controller
       $entrada->grupo_id = $grupo_id;
       $entrada->alumno_id = $alumno_id;
       $entrada->save();
+      flash('Datos guardados exitosamente')->success();
       return redirect('detalleGrupo/'.$grupo_id);
    }
 
@@ -163,6 +168,7 @@ class gruposController extends Controller
          ->update(['calificacion' => $c]);
 
       }
+      flash('Datos guardados exitosamente')->success();
       return redirect('/consultarGrupos');
    }
 }

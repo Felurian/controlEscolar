@@ -21,6 +21,7 @@ class maestrosController extends Controller
          $maestro->sexo=$datos->input('sexo');
          $maestro->save();
 
+         flash('Datos guardados exitosamente')->success();
          return redirect('/consultarMaestros');
    }
    public function consultar(){
@@ -33,6 +34,8 @@ class maestrosController extends Controller
    public function eliminar($id){
          $maestro=Maestros::find($id);
          $maestro->delete();
+
+         flash('Datos eliminados exitosamente')->success();
          return redirect('consultarMaestros');
    }
    public function editar($id){
@@ -50,7 +53,8 @@ class maestrosController extends Controller
       $maestro->edad=$datos->input('edad');
       $maestro->sexo=$datos->input('sexo');
       $maestro->save();
-
+      
+      flash('Datos guardados exitosamente')->success();
       return redirect('consultarMaestros');
    }  
 
