@@ -97,7 +97,7 @@ class materiasController extends Controller
       $grupos_detalle->alumno_id=$id;
       $grupos_detalle->grupo_id=$datos->input('grupo_id');
       $grupos_detalle->save();
-      
+
       flash('Datos guardados exitosamente')->success();
       return redirect('/cargarMaterias/'.$id);
    }
@@ -106,6 +106,7 @@ class materiasController extends Controller
          ->where('grupo_id', '=', $grupo_id)
          ->where('alumno_id', '=', $alumno_id)
          ->delete();
+      flash('Datos eliminados exitosamente')->success();
       return redirect('cargarMaterias/'.$alumno_id);
    }
 }
