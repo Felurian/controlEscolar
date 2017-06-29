@@ -2,6 +2,12 @@
 
 @section('contenido')
 
+@include('flash::message')
+<script type="text/javascript">
+	setTimeout(function(){
+		$(".alert").fadeOut(1500);
+	},1500);
+</script>
 <label>Materia:  {{$grupo->nom_materia}}</label><br>
 <label>Maestro:  {{$grupo->nom_maestro}}</label><br>
 <label>Horario:  {{$grupo->hora}}</label><br>
