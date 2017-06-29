@@ -25,7 +25,7 @@
 					<a href="{{url('/detalleGrupo')}}/{{$g->id}}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="bottom" title="Cargar Alumnos">
 						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>	
 					</a>
-					<a href="{{url('/registrarCalificaciones')}}/{{$g->id}}" class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="bottom" title="Cargar Alumnos">
+					<a href="{{url('/registrarCalificaciones')}}/{{$g->id}}" class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="bottom" title="Calificaciones">
 						<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>	
 					</a>
 					<a href="{{url('/eliminarGrupo')}}/{{$g->id}}" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="bottom" title="Eliminar">

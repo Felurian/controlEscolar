@@ -30,6 +30,9 @@ Route::get('/pdfAlumnos', 'alumnosController@pdf');
 
 Route::post('/actualizarAlumno/{id}', 'alumnosController@actualizar');
 
+Route::get('/boletaPDF/{id}', 'alumnosController@boletaPDF');
+
+
 
 
 				//MAESTROS

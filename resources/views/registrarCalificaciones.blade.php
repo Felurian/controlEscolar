@@ -36,7 +36,8 @@
 				<td>{{$a->nombre}}</td>
 				<td>{{$a->numero_control}}</td>
 				<td>
-					<input type="number" name="calificacion{{$a->id}}">
+					<input type="number" name="calificacion[]" value="{{$a->calificacion}}">
+					<input type="hidden" name="id_alu[]" value="{{$a->id}}">
 				</td>
 			</tr>
 		@endforeach

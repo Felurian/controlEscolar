@@ -142,14 +142,28 @@ class gruposController extends Controller
       $alumnos = DB::table('grupos_detalle')
          ->where('grupos_detalle.grupo_id', '=', $id)
          ->join('alumnos', 'grupos_detalle.alumno_id', '=', 'alumnos.id')
-         ->select('alumnos.*')
+         ->select('alumnos.*','grupos_detalle.calificacion')
          ->get();
       return view('/registrarCalificaciones', compact('grupo','alumnos'));
    }
 
    public function guardarCalificaciones($id, Request $datos)
    {
-     
+      $cali= $datos->calificacion;
+      $alu= $datos->id_alu;
+      $l = count($cali);
+
+      for($i=0;$i<$l;$i++)
+      {
+         $a = array_pop($alu);
+         $c = array_pop($cali);
+         DB::table('grupos_detalle')
+         ->where('grupo_id', '=', $id)
+         ->where('alumno_id', '=', $a)
+         ->update(['calificacion' => $c]);
+
+      }
+      return redirect('/consultarGrupos');
    }
 }
 

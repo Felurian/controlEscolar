@@ -76,6 +76,25 @@ class alumnosController extends Controller
       $pdf->loadHTML($vista);
       return $pdf->stream('ListaAlumnos.pdf');
    }
+   public function boletaPDF($a)
+   {
+      $datos=DB::table('grupos_detalle')
+         ->join('alumnos', 'grupos_detalle.alumno_id', '=', 'alumnos.id')
+         ->join('grupos','grupos_detalle.grupo_id','=','grupos.id')
+         ->join('maestros', 'grupos.maestro_id', '=', 'maestros.id')
+         ->join('materias', 'grupos.materia_id', '=', 'materias.id')
+         ->where('grupos_detalle.alumno_id', '=', $a)
+         ->select('materias.nombre AS nom_materia','materias.id AS mid', 'grupos_detalle.calificacion','alumnos.nombre','alumnos.numero_control')
+         ->get();
+      $alumno=DB::table
+
+      $vista=view('boletaPDF', compact('datos'));
+
+      $pdf=\App::make('dompdf.wrapper');
+      $pdf->loadHTML($vista);
+      return $pdf->stream('Boleta.pdf');
+
+   }
 }
 
 
