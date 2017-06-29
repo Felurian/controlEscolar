@@ -1,21 +1,46 @@
 @extends('master')
 
 @section('contenido')
-
-<section id="seccion2">
+<style type="">
+	h1
+	{
+		text-align: center;
+		font-weight: bold;
+	}
+	#seccion1 article
+	{
+		display: inline-block;
+		width: 33%;
+		vertical-align: top;
+		margin-bottom: 0px;
+	}
+	.botones{
+		text-align: right;
+	}
+	.texto
+	{
+		font-weight: normal;
+	}
+</style>
+<h1>Registro de Calificaciones</h1><br><br>
+<section id="seccion1">
 		<article id="primeraColumna">
-			<label class="titulos">MATERIA</label> <br>
-			<label>{{$grupo->materia_id}}</label>
-			<label>{{$grupo->nom_materia}}</label><br>
-			<label class="titulos">DOCENTE</label> <br>
-			<label>{{$grupo->maestro_id}}</label>
-			<label>{{$grupo->nom_maestro}}</label>
+			<label class="titulos">MATERIA:</label> <br>
+			<label class="texto">{{$grupo->materia_id}}</label>
+			<label class="texto">{{$grupo->nom_materia}}</label><br>
 		</article>
+
 		<article id="segundaColumna">
-			<label class="titulos">GRUPO</label> 
-			<label>{{$grupo->salon}} / {{$grupo->hora}}</label>
+			<label class="titulos">DOCENTE:</label> <br>
+			<label class="texto">{{$grupo->maestro_id}}</label>
+			<label class="texto">{{$grupo->nom_maestro}}</label>
 		</article>
-	</section>
+		<article id="terceraColumna">
+			<label class="titulos">GRUPO:</label> <br>
+			<label class="texto">{{$grupo->salon}} / {{$grupo->hora}}</label>
+		</article>
+</section>
+<hr>
 	<form action="{{url('/guardarCalificaciones')}}/{{$grupo->id}}" method="POST">
 	<input id="token" type="hidden" name="_token" value="{{ csrf_token() }}">
 	
@@ -44,7 +69,7 @@
 		</thead>
 
 </table>
-<div>
+<div class="botones">
 		<button type="submit" class="btn btn-primary">Guardar</button>
 		<a href="{{url('/')}}" class="btn btn-danger">Cancelar</a>
 </div>

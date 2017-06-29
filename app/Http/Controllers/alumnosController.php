@@ -61,7 +61,7 @@ class alumnosController extends Controller
       $alumno->carrera_id=$datos->input('carrera');
       $alumno->save();
 
-      return redirect('agregarAlumnoGrupo');
+      return redirect('consultarAlumnos');
    }
 
    public function pdf()
@@ -86,7 +86,7 @@ class alumnosController extends Controller
          ->where('grupos_detalle.alumno_id', '=', $a)
          ->select('materias.nombre AS nom_materia','materias.id AS mid', 'grupos_detalle.calificacion','alumnos.nombre','alumnos.numero_control')
          ->get();
-      $alumno=DB::table
+
 
       $vista=view('boletaPDF', compact('datos'));
 
